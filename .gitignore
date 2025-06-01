@@ -1,0 +1,12 @@
+# Node.js backend
+/server/node_modules/
+server/.env
+
+# Angular frontend
+/client/node_modules/
+.client-angular/
+
+# IDE and system files
+.DS_Store
+dist/
+.env

@@ -1,0 +1,60 @@
+<!-- Step indicator -->
+<p-toast></p-toast>
+<p-steps [model]="steps" [activeIndex]="stepIndex" styleClass="mb-4"></p-steps>
+<div class="form-wrapper">
+
+
+<form [formGroup]="form" class="p-fluid" (ngSubmit)="submit()">
+
+  <!-- Step 1 -->
+  <div *ngIf="stepIndex === 0">
+    <div class="p-field flex gap-6 items-center mb-4">
+      <label for="name" class="w-50">Name</label>
+      <input id="name" type="text" pInputText formControlName="name" />
+    </div>
+    <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="text-red-500 text-sm">
+      <div *ngIf="form.get('email')?.errors?.['required']">Email is required.</div>
+      <div *ngIf="form.get('email')?.errors?.['email']">Enter a valid email address.</div>
+    </div>
+    <div class="p-field flex gap-6">
+      <label for="email">Email</label>
+      <input id="email" type="email" pInputText formControlName="email" />
+    </div>
+
+
+    <div class="p-field flex gap-6 mt-4 mb-8">
+      <label for="age">Age</label>
+      <input id="age" type="number" pInputText formControlName="age" />
+    </div>
+  </div>
+
+  <!-- Step 2 -->
+  <div *ngIf="stepIndex === 1">
+    <div class="p-field flex gap-6 mb-4">
+      <label for="feedback">Your Feedback</label>
+      <textarea id="feedback" rows="4" pInputTextarea formControlName="feedback"></textarea>
+    </div>
+    <div class="p-field flex gap-6 mb-8">
+      <label for="rating">Rating</label>
+      <p-rating formControlName="rating"></p-rating>
+    </div>
+  </div>
+
+  <!-- Step 3 -->
+  <div *ngIf="stepIndex === 2">
+    <h3>Summary</h3>
+    <p><strong>Name:</strong> {{ form.value.name }}</p>
+    <p><strong>Email:</strong> {{ form.value.email }}</p>
+    <p><strong>Age:</strong> {{ form.value.age }}</p>
+    <p><strong>Feedback:</strong> {{ form.value.feedback }}</p>
+    <p><strong>Rating:</strong> {{ form.value.rating }}</p>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="p-mt-3">
+    <button pButton type="button" label="Back" (click)="goBack()" [disabled]="stepIndex === 0"></button>
+    <button *ngIf="stepIndex < 2" pButton type="button" label="Next" (click)="next()" class="ml-2"></button>
+    <button *ngIf="stepIndex === 2" pButton type="submit" label="Submit" class="ml-2"></button>
+  </div>
+</form>
+</div>

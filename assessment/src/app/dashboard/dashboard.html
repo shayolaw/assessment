@@ -1,0 +1,58 @@
+<div>
+  <p-toast>hellooo</p-toast>
+<p-table [value]="feedbacks()">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Age</th>
+      <th>Feedback</th>
+      <th>Rating</th>
+      <th>Actions</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-feedback>
+    <tr>
+      <td>{{ feedback.name }}</td>
+      <td>{{ feedback.email }}</td>
+      <td>{{ feedback.age }}</td>
+      <td>{{ feedback.feedback }}</td>
+      <td>{{ feedback.rating }}</td>
+      <td>
+        <p-button (click)="showDialog(feedback)" label="Show" />
+        <button pButton type="button" label="Delete" class="p-button-danger ml-2" (click)="deleteFeedback(feedback._id)"></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+</div>
+
+<p-dialog header="Edit Profile" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+  <span class="p-text-secondary block mb-8">Update your information.</span>
+  <form [formGroup]="editForm" (ngSubmit)="submitEdit()">
+      <div class="flex items-center gap-4 mb-4">
+          <label for="name" class="font-semibold ">Name</label>
+          <input pInputText id="name"  class="flex-auto" formControlName="name" autocomplete="off" />
+      </div>
+      <div class="flex items-center gap-4 mb-4">
+          <label for="email" class="font-semibold w-24">Email</label>
+          <input pInputText id="email" class="flex-auto" formControlName="email" autocomplete="off" />
+      </div>
+      <div class="flex items-center gap-4 mb-4">
+          <label for="age" class="font-semibold w-24">Age</label>
+          <input  id="age" class="flex-auto" type="number" pInputText formControlName="age"  autocomplete="off" />
+    </div>
+    <div class="flex items-center gap-4 mb-4">
+      <label for="feedback" class="font-semibold w-24">Your Feedback</label>
+      <textarea id="feedback" class="flex-auto" rows="4" pInputTextarea formControlName="feedback"></textarea>
+    </div>
+     <div class="flex items-center gap-4 mb-8">
+      <label for="rating" class="font-semibold w-24">Rating</label>
+      <p-rating formControlName="rating"></p-rating>
+     </div>
+      <div class="flex justify-end gap-2">
+          <p-button label="Cancel" severity="secondary" (click)="visible = false" />
+          <p-button label="Save"  type="submit"/>
+      </div>
+    </form>
+</p-dialog>

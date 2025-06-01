@@ -1,0 +1,11 @@
+.navbar{
+  display: flex;
+  gap:140px;
+  align-items: center;
+  justify-content: end;
+}
+.nav-links{
+  display: flex;
+  gap:40px;
+  align-items: center;
+}
