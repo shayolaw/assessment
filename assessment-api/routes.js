@@ -5,7 +5,7 @@ const emailValidation = require('./emailValidation');
 const router = express.Router();
 
 router.get('/', async(req,res)=>{
-    res.send("Hello bitches");
+    res.send("Welcome to the feedback api");
 })
 // Create a new feedback
 router.post('/api/feedback', async (req, res) => {

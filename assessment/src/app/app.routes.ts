@@ -8,7 +8,7 @@ export const routes: Routes = [
         component: MultiStepForm
     },
     {
-        path: 'dashboard',
+        path: '',
         component: Dashboard
     }
 ];
