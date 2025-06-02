@@ -18,10 +18,8 @@ This is a full-stack web application for collecting and managing feedback, built
 ### 1. Clone the Repository
 
 ### 2. Create a .env file in the assessment-api directory with the following varibales 
-- MONGO_USER=shayolaw
-- MONGO_PASS=shayzzel97
-- MONGO_CLUSTER=cluster0.kcp3xdj.mongodb.net
-- MONGO_DB=feedbacks
+- MONGO_URI= mongodb+srv://shayolaw:shayzzel97@cluster0.kcp3xdj.mongodb.net/feedbacks?retryWrites=true&w=majority`
+- PORT = 3000
 
 ### Run with DOCKER
  - use command in terminal docker compose up --build
